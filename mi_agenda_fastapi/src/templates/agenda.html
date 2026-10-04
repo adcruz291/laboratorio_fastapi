@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Agenda de {{ user.username }}{% endblock %}
+{% block content %}
+<h1>Agenda de {{ user.username }}</h1>
+<p><a href="/logout">Cerrar sesión</a></p>
+
+<h2>Nuevo contacto</h2>
+<form class="stack" method="post" action="/agenda">
+  <input name="nombre" placeholder="Nombre" required>
+  <input name="telefono" placeholder="Teléfono" required>
+  <input name="email" type="email" placeholder="Email (opcional)">
+  <button type="submit">Agregar</button>
+</form>
+
+<h2>Contactos</h2>
+<table>
+  <thead><tr><th>Nombre</th><th>Teléfono</th><th>Email</th></tr></thead>
+  <tbody>
+  {% for c in contactos %}
+    <tr><td>{{ c.nombre }}</td><td>{{ c.telefono }}</td><td>{{ c.email or "" }}</td></tr>
+  {% else %}
+    <tr><td colspan="3">Aún no tienes contactos.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

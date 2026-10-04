@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Acceso · Mi Agenda{% endblock %}
+{% block content %}
+<h1>Mi Agenda</h1>
+{% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+<h2>Iniciar sesión</h2>
+<form class="stack" method="post" action="/login">
+  <input name="username" placeholder="Usuario" required>
+  <input name="password" type="password" placeholder="Contraseña" required>
+  <button type="submit">Entrar</button>
+</form>
+
+<h2>Registrarse</h2>
+<form class="stack" method="post" action="/registro">
+  <input name="username" placeholder="Usuario" required>
+  <input name="password" type="password" placeholder="Contraseña" required>
+  <button type="submit">Crear cuenta</button>
+</form>
+{% endblock %}
